@@ -1,0 +1,10 @@
+SELECT c.client_name, o.order_id, o.order_date,
+       SUM(CASE WHEN p.product_id IS NOT NULL THEN p.price * oi.quantity
+                WHEN s.service_id IS NOT NULL THEN s.price * oi.quantity
+           ELSE 0 END) AS total_amount
+FROM clients c
+JOIN orders o ON c.client_id = o.client_id
+JOIN order_items oi ON o.order_id = oi.order_id
+LEFT JOIN products p ON oi.product_id = p.product_id
+LEFT JOIN services s ON oi.service_id = s.service_id
+GROUP BY c.client_name, o.order_id, o.order_date;
