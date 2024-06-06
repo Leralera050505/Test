@@ -1,5 +1,6 @@
 Restore database ИМЯ
 from disk = 'ПУТЬ'
+C:\Program Files\Microsoft SQL Server\MSSQL16.sqlexpress\MSSQL\Backup\ИМЯ
 
 Backup database ИМЯ
 from disk = 'ПУТЬ'
