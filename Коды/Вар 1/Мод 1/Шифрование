@@ -1,1 +1,15 @@
+--Шифрование
+create or alter proc PR_HashPassword
+@IdWorker int,
+@Password nvarchar(50)
+as
+begin 
+insert into [Password](IDWorker, [Password])
+values(@IdWorker, ENCRYPTBYPASSPHRASE('123', @Password))
+end
+exec PR_HashPassword 1,'qwerty'
 
+--Расшифровка
+Select CONVERT(NVARCHAR(100), DECRYPTBYPASSPHRASE('123', [Password]))
+FROM [Password]
+WHERE ID = 1
