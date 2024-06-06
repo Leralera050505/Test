@@ -1,0 +1,20 @@
+CREATE or alter  PROCEDURE CheckEmailValidity
+AS
+BEGIN
+    DECLARE @ValidEmails TABLE (Email NVARCHAR(100), IsValid BIT);
+
+    INSERT INTO @ValidEmails (Email, IsValid)
+    SELECT 
+        Email,
+        CASE 
+            WHEN Email NOt LIKE '%[%^A-Za-z0-9@.%]%' THEN 0 --на регистры 
+            WHEN Email NOT LIKE '%@%._%' THEN 0 -- проверка на длину и формат написания 
+            WHEN CHARINDEX('[', LTRIM(RTRIM(Email))) <> 0 THEN 0
+            WHEN CHARINDEX(']', LTRIM(RTRIM(Email))) <> 0 THEN 0
+            ELSE 1
+        END AS IsValid
+    FROM Worker; 
+    SELECT * FROM @ValidEmails;
+END
+
+exec CheckEmailValidity
