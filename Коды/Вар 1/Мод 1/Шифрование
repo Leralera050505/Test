@@ -1,15 +1,15 @@
 --Шифрование
-create or alter proc PR_HashPassword
+create or alter proc PR_HashPassword --ПРОЦЕДУРА, ИД ЮЗЕРА И ПАРОЛЬ
 @IdWorker int,
 @Password nvarchar(50)
 as
 begin 
 insert into [Password](IDWorker, [Password])
-values(@IdWorker, ENCRYPTBYPASSPHRASE('123', @Password))
+values(@IdWorker, ENCRYPTBYPASSPHRASE('123', @Password)) --ТУТ ОСНОВНОЕ
 end
-exec PR_HashPassword 1,'qwerty'
+exec PR_HashPassword 1,'qwerty' --ВЫЗОВ
 
 --Расшифровка
-Select CONVERT(NVARCHAR(100), DECRYPTBYPASSPHRASE('123', [Password]))
+Select CONVERT(NVARCHAR(100), DECRYPTBYPASSPHRASE('123', [Password])) --ТУТ ДЕШИФРОВКА
 FROM [Password]
 WHERE ID = 1
