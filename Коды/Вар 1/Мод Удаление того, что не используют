@@ -1,4 +1,0 @@
---удаление  не заказываемые товары и услуги
-
-delete from Product Where IdProduct not in (select op.IdProduct from OrderProduct op);
-delete from [Service] Where IdService not in (select op.IdService from OrderService op);
