@@ -1,0 +1,5 @@
+Restore database ИМЯ
+from disk = 'ПУТЬ'
+
+Backup database ИМЯ
+from disk = 'ПУТЬ'
