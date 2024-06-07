@@ -11,3 +11,4 @@
 
 
 :3
+![изображение](https://github.com/Leralera050505/Test/assets/114149936/c7f240a7-b3a1-4bd9-a7af-81f05bc251f8)
